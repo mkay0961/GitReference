@@ -8,7 +8,9 @@ public class GitReference {
 
     private String command, example, explanation, section;
 
-    public GitReference(){}
+    public GitReference(){
+
+    }
 
 
     public String getCommand() {

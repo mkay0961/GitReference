@@ -1,6 +1,7 @@
 package com.example.matthewkay.gitreference;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ public class Adapter extends BaseAdapter{
     private Context mContext;
     private LayoutInflater mInflater;
     private ArrayList mDataSource;
+
 
     public Adapter(Context context, ArrayList<GitReference> commands){
         mContext = context;
@@ -46,14 +48,18 @@ public class Adapter extends BaseAdapter{
         View rowView = mInflater.inflate(android.R.layout.simple_expandable_list_item_2, viewGroup, false);
 
         TextView commandView = rowView.findViewById(android.R.id.text1);
-        TextView exampleView = rowView.findViewById(android.R.id.text2);
+        Log.i("test", "broke7");
+        //TextView exampleView = rowView.findViewById(android.R.id.text2);
         //TextView explanationView = rowView.findViewById(android.R.id.text3);
+
         //TextView sectionView = rowView.findViewById(android.R.id.text4);
+        Log.i("test", "broke84" + getItem(i));
 
-
-        GitReference command = (GitReference) getItem(position);
-        commandView.setText(command.getCommand());
-        exampleView.setText(command.getExample());
+        GitReference command = (GitReference) getItem(i);
+        Log.i("test", "broke8" + command);
+        //commandView.setText(command.getCommand());
+        //Log.i("test", "broke9");
+        //exampleView.setText(command.getExample());
         //explanationView.setText(command.getExplanation());
         //sectionView.setText(command.getSection());
 
