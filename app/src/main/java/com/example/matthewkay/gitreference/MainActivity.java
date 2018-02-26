@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        jsonview = (ListView) findViewById(R.id.json);
+        jsonview = (ListView) findViewById(R.id.ListView1);
 
         ArrayList<String> items = populateWithData("gitReference.json");
 
