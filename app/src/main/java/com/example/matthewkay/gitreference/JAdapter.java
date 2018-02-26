@@ -14,14 +14,14 @@ import java.util.ArrayList;
  * Created by MatthewKay on 2/25/18.
  */
 
-public class Adapter extends BaseAdapter{
+public class JAdapter extends BaseAdapter{
 
     private Context mContext;
     private LayoutInflater mInflater;
     private ArrayList mDataSource;
 
 
-    public Adapter(Context context, ArrayList<GitReference> commands){
+    public JAdapter(Context context, ArrayList<String> commands){
         mContext = context;
         mDataSource = commands;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -45,24 +45,23 @@ public class Adapter extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View rowView = mInflater.inflate(android.R.layout.simple_expandable_list_item_2, viewGroup, false);
-
-        TextView commandView = rowView.findViewById(android.R.id.text1);
-        Log.i("test", "broke7");
-        //TextView exampleView = rowView.findViewById(android.R.id.text2);
-        //TextView explanationView = rowView.findViewById(android.R.id.text3);
-
-        //TextView sectionView = rowView.findViewById(android.R.id.text4);
-        Log.i("test", "broke84" + getItem(i));
+        View rowView = mInflater.inflate(R.layout.custom_row_view, viewGroup, false);
+        Log.i("HELL", "JEsadasdEJ");
+        TextView commandView = rowView.findViewById(R.id.command);
+        TextView exampleView = rowView.findViewById(R.id.example);
+        TextView explanationView = rowView.findViewById(R.id.explanation);
+        TextView sectionView = rowView.findViewById(R.id.section);
+        Log.i("test", "broke84");
 
         GitReference command = (GitReference) getItem(i);
-        Log.i("test", "broke8" + command);
-        //commandView.setText(command.getCommand());
-        //Log.i("test", "broke9");
-        //exampleView.setText(command.getExample());
-        //explanationView.setText(command.getExplanation());
-        //sectionView.setText(command.getSection());
-
+        Log.i("test", "broke8" );
+        commandView.setText(command.getCommand());
+        Log.i("test", "broke9" );
+        exampleView.setText(command.getExample());
+        Log.i("test", "broke99" );
+        explanationView.setText(command.getExplanation());
+        Log.i("test", "broke90" );
+        sectionView.setText(command.getSection());
 
 
         return rowView;

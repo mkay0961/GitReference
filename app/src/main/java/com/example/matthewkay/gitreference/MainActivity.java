@@ -24,12 +24,18 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<String> items = populateWithData("gitReference.json");
 
+        Log.i("HELL", "JEEdddddJ");
+        JAdapter adapter = new JAdapter(this,items);
 
-        Adapter adapter = new Adapter(this, items);
+        Log.i("HELL", "JEEJ");
+
 
 
         jsonview.setAdapter(adapter);
-        Log.i("test", "broke5");
+        Log.i("HELL", "JEddddEJ");
+
+
+
 
 
 
@@ -43,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         String jsonString = processData(fileName);
 
         Log.i("JSON",jsonString );
+
         ArrayList<GitReference> jsonreferences = JsonUtils.populateGitReferences(jsonString);
 
         for (GitReference g:jsonreferences){
