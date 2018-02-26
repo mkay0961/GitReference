@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView jsonview;
 
+    private Button startButton;
+    private EditText file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +27,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+//        file = (EditText) findViewById(R.id.filename);
+
         jsonview = (ListView) findViewById(R.id.ListView1);
 
-        ArrayList<GitReference> items = populateWithData("gitReference.json");
+//        startButton = (Button) findViewById(R.id.buttongen);
 
 
-        JAdapter adapter = new JAdapter(this , items);
 
+        //ArrayList<GitReference> items = populateWithData("gitReference.json");
+
+
+        //JAdapter adapter = new JAdapter(this , items);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //ArrayList<GitReference> items = populateWithData(file.getText().toString());
+
+
+                ArrayList<GitReference> items = populateWithData("gitReference.json");
+
+
+                JAdapter adapter = new JAdapter(getApplicationContext() , items);
+                jsonview.setAdapter(adapter);
+                //startButton.setEnabled(false);
+
+            }
+        });
 
         jsonview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -39,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        jsonview.setAdapter(adapter);
+        //jsonview.setAdapter(adapter);
 
 
 
