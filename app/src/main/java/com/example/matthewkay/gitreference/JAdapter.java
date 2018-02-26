@@ -46,22 +46,22 @@ public class JAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
         View rowView = mInflater.inflate(R.layout.custom_row_view, viewGroup, false);
-        Log.i("HELL", "JEsadasdEJ");
+
         TextView commandView = rowView.findViewById(R.id.command);
         TextView exampleView = rowView.findViewById(R.id.example);
         TextView explanationView = rowView.findViewById(R.id.explanation);
         TextView sectionView = rowView.findViewById(R.id.section);
-        Log.i("test", "broke84");
+
 
 
         GitReference command = (GitReference) mDataSource.get(position);
-        Log.i("test", "broke8" );
+
         commandView.setText(command.getCommand());
-        Log.i("test", "broke9" );
+
         exampleView.setText(command.getExample());
-        Log.i("test", "broke99" );
+
         explanationView.setText(command.getExplanation());
-        Log.i("test", "broke90" );
+
         sectionView.setText(command.getSection());
 
 
