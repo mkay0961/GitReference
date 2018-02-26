@@ -21,7 +21,7 @@ public class JAdapter extends BaseAdapter{
     private ArrayList mDataSource;
 
 
-    public JAdapter(Context context, ArrayList<String> commands){
+    public JAdapter(Context context, ArrayList<GitReference> commands){
         mContext = context;
         mDataSource = commands;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -44,7 +44,7 @@ public class JAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, ViewGroup viewGroup) {
         View rowView = mInflater.inflate(R.layout.custom_row_view, viewGroup, false);
         Log.i("HELL", "JEsadasdEJ");
         TextView commandView = rowView.findViewById(R.id.command);
@@ -53,7 +53,8 @@ public class JAdapter extends BaseAdapter{
         TextView sectionView = rowView.findViewById(R.id.section);
         Log.i("test", "broke84");
 
-        GitReference command = (GitReference) getItem(i);
+
+        GitReference command = (GitReference) mDataSource.get(position);
         Log.i("test", "broke8" );
         commandView.setText(command.getCommand());
         Log.i("test", "broke9" );

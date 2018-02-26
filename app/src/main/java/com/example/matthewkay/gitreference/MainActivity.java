@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
         jsonview = (ListView) findViewById(R.id.ListView1);
 
-        ArrayList<String> items = populateWithData("gitReference.json");
+        ArrayList<GitReference> items = populateWithData("gitReference.json");
 
         Log.i("HELL", "JEEdddddJ");
-        JAdapter adapter = new JAdapter(this,items);
+        JAdapter adapter = new JAdapter(this , items);
 
         Log.i("HELL", "JEEJ");
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public ArrayList<String> populateWithData(String fileName){
+    public ArrayList<GitReference> populateWithData(String fileName){
         ArrayList<String> returnList = new ArrayList<>();
 
         String jsonString = processData(fileName);
@@ -55,8 +55,24 @@ public class MainActivity extends AppCompatActivity {
         for (GitReference g:jsonreferences){
             returnList.add(g.getCommand());
         }
-        return returnList;
+        return jsonreferences;
     }
+
+
+//    public ArrayList<String> populateWithData(String fileName){
+//        ArrayList<String> returnList = new ArrayList<>();
+//
+//        String jsonString = processData(fileName);
+//
+//        Log.i("JSON",jsonString );
+//
+//        ArrayList<GitReference> jsonreferences = JsonUtils.populateGitReferences(jsonString);
+//
+//        for (GitReference g:jsonreferences){
+//            returnList.add(g.getCommand());
+//        }
+//        return returnList;
+//    }
 
 
     public String processData(String filename) {
