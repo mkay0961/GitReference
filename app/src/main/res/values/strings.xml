@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">GitReference</string>
     <string name="Generate">Generate Json Objects</string>
-    <string name="search">Search</string>
+
     <string name="file">File Name</string>
+
+    <string name="sectiontag">Section: </string>
+    <string name="explanationtag">Explanation: </string>
+    <string name="exampletag">Example: </string>
+    <string name="commandtag">Command: </string>
+    <string name="search">Search.. </string>
+
 </resources>

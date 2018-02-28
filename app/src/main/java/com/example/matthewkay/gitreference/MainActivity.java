@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.io.InputStream;
@@ -20,52 +21,61 @@ public class MainActivity extends AppCompatActivity {
 
     private Button startButton;
     private EditText file;
+    private SearchView search;
+    private JAdapter adapter, mAdapter;
+    ArrayList<GitReference> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        jsonview = (ListView) findViewById(R.id.ListView1);
+        search = (SearchView) findViewById(R.id.searchid);
+        items = populateWithData("gitReference.json");
+
+
+
+
+
+         adapter = new JAdapter(getApplicationContext() , items);
+        jsonview.setAdapter(adapter);
+        //        startButton = (Button) findViewById(R.id.buttongen);
 
 //        file = (EditText) findViewById(R.id.filename);
 
-        jsonview = (ListView) findViewById(R.id.ListView1);
-
-//        startButton = (Button) findViewById(R.id.buttongen);
 
 
-
-        //ArrayList<GitReference> items = populateWithData("gitReference.json");
-
-
-        //JAdapter adapter = new JAdapter(this , items);
-
-        startButton.setOnClickListener(new View.OnClickListener() {
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View v) {
-
-                //ArrayList<GitReference> items = populateWithData(file.getText().toString());
-
-
-                ArrayList<GitReference> items = populateWithData("gitReference.json");
-
-
-                JAdapter adapter = new JAdapter(getApplicationContext() , items);
-                jsonview.setAdapter(adapter);
-                //startButton.setEnabled(false);
-
+            public boolean onQueryTextSubmit(String s) {
+                return false;
             }
-        });
 
-        jsonview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"hello" , Toast.LENGTH_SHORT).show();
+            public boolean onQueryTextChange(String s) {
+                int textlength = s.length();
+                ArrayList<GitReference> tempArrayList = new ArrayList<GitReference>();
+                for(GitReference c: items){
+                    if (textlength <= c.getCommand().length()) {
+                        if (c.getCommand().toLowerCase().contains(s.toString().toLowerCase())) {
+                            tempArrayList.add(c);
+                        }
+                    }
+                }
+                mAdapter = new JAdapter(getApplicationContext(), tempArrayList);
+                jsonview.setAdapter(mAdapter);
+                return false;
             }
         });
 
 
-        //jsonview.setAdapter(adapter);
+
+
+
+
+
+
 
 
 
@@ -92,21 +102,6 @@ public class MainActivity extends AppCompatActivity {
         return jsonreferences;
     }
 
-
-//    public ArrayList<String> populateWithData(String fileName){
-//        ArrayList<String> returnList = new ArrayList<>();
-//
-//        String jsonString = processData(fileName);
-//
-//        Log.i("JSON",jsonString );
-//
-//        ArrayList<GitReference> jsonreferences = JsonUtils.populateGitReferences(jsonString);
-//
-//        for (GitReference g:jsonreferences){
-//            returnList.add(g.getCommand());
-//        }
-//        return returnList;
-//    }
 
 
     public String processData(String filename) {
