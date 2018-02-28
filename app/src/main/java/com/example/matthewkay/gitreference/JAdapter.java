@@ -2,6 +2,7 @@ package com.example.matthewkay.gitreference;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,13 +59,14 @@ public class JAdapter extends BaseAdapter{
 
         GitReference command = (GitReference) mDataSource.get(position);
 
-        commandView.setText( command.getCommand());
 
-        exampleView.setText(command.getExample());
+        commandView.setText(mContext.getResources().getString(R.string.commandtag) +command.getCommand());
 
-        explanationView.setText(command.getExplanation());
+        exampleView.setText(mContext.getResources().getString(R.string.exampletag)+ command.getExample());
 
-        sectionView.setText(command.getSection());
+        explanationView.setText(mContext.getResources().getString(R.string.explanationtag)+ command.getExplanation());
+
+        sectionView.setText(mContext.getResources().getString(R.string.sectiontag)+ command.getSection());
 
         return rowView;
     }

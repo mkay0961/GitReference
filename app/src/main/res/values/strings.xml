@@ -4,10 +4,10 @@
 
     <string name="file">File Name</string>
 
-    <string name="sectiontag">Section: </string>
-    <string name="explanationtag">Explanation: </string>
-    <string name="exampletag">Example: </string>
-    <string name="commandtag">Command: </string>
+    <string name="sectiontag">"Section: "</string>
+    <string name="explanationtag">"Explanation: "</string>
+    <string name="exampletag">"Example: "</string>
+    <string name="commandtag">"Command: "</string>
     <string name="search">Search.. </string>
 
 </resources>

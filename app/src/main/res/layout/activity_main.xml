@@ -8,22 +8,12 @@
 <SearchView
     android:layout_width="fill_parent"
     android:id="@+id/searchid"
+    android:queryHint="@string/search"
     android:layout_height="wrap_content">
 
 </SearchView>
 
-<!--<EditText-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/filename"-->
-    <!--android:hint="@string/file"-->
-    <!--/>-->
 
-    <!--<Button-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:text="@string/Generate"-->
-        <!--android:id="@+id/buttongen"-->
-        <!--android:layout_height="wrap_content" />-->
 
     <ListView
         android:id="@+id/ListView1"

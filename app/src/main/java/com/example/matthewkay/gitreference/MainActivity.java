@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.InputStream;
@@ -19,32 +20,27 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView jsonview;
 
-    private Button startButton;
-    private EditText file;
+
     private SearchView search;
+
     private JAdapter adapter, mAdapter;
     ArrayList<GitReference> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         jsonview = (ListView) findViewById(R.id.ListView1);
+
         search = (SearchView) findViewById(R.id.searchid);
+
         items = populateWithData("gitReference.json");
 
+        adapter = new JAdapter(getApplicationContext() , items);
 
-
-
-
-         adapter = new JAdapter(getApplicationContext() , items);
         jsonview.setAdapter(adapter);
-        //        startButton = (Button) findViewById(R.id.buttongen);
-
-//        file = (EditText) findViewById(R.id.filename);
-
-
 
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -69,36 +65,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     public ArrayList<GitReference> populateWithData(String fileName){
-        ArrayList<String> returnList = new ArrayList<>();
-
         String jsonString = processData(fileName);
 
         Log.i("JSON",jsonString );
 
         ArrayList<GitReference> jsonreferences = JsonUtils.populateGitReferences(jsonString);
-
-//        for (GitReference g:jsonreferences){
-//            returnList.add(g.getCommand());
-//        }
         return jsonreferences;
     }
 
